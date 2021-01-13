@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 
-namespace Hex.Paths
+namespace HexCS.Core
 {
     /// <summary>
     /// <para> Because of the complexity that comes from parsing string paths, 

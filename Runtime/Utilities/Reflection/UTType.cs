@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using HexCS.Core;
 
-namespace HexCS.Reflection
+namespace HexCS.Core
 {
     /// <summary>
     /// General utilties for Type objects

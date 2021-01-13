@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace Hex.Paths
+namespace HexCS.Core
 {
     /// <summary>
     /// Helpers and extentions for PathStrings

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace HexCS.Reflection
+namespace HexCS.Core
 {
     /// <summary>
     /// Utilities used during refelection when handling assembly objects

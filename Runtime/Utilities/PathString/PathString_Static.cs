@@ -1,4 +1,4 @@
-﻿namespace Hex.Paths
+﻿namespace HexCS.Core
 {
     public partial class PathString
     {
