@@ -470,7 +470,7 @@ namespace HexCS.Core
                     using (f.Create()) { }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
