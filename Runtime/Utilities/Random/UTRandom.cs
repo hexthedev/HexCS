@@ -72,13 +72,33 @@ namespace HexCS.Core
         /// <summary>
         /// Returns a random byte array
         /// </summary>
-        /// <param name="length"></param>
-        /// <returns></returns>
         public static byte[] Bytes(int length)
         {
             byte[] bytes = new byte[length];
             _random.Value.NextBytes(bytes);
             return bytes;
+        }
+
+        /// <summary>
+        /// Returns a random uppercase or lowercase letter
+        /// </summary>
+        public static char Letter()
+        {
+            // 50/50 upper or lower
+            if (Bool())
+            {
+                int min = (int)'A';
+                int max = (int)'Z';
+
+                return (char)Int(min, max + 1);
+            }
+            else
+            {
+                int min = (int)'a';
+                int max = (int)'z';
+
+                return (char)Int(min, max + 1);
+            }
         }
     }
 }
