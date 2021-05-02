@@ -67,6 +67,18 @@ namespace HexCS.Core
         /// </summary>
         public string End => IsEmpty ? null : _path[Length-1];
 
+        /// <summary>
+        /// returns last step without extension or null if path is empty.
+        /// </summary>
+        public string EndWithoutExtension
+        {
+            get
+            {
+                if (IsEmpty) return null;
+                int dotIndex = _path[Length - 1].IndexOf('.');
+                return dotIndex == -1 ? _path[Length - 1] : _path[Length - 1].Substring(0, dotIndex); 
+            }
+        }
 
         /// <summary>
         /// Get the path step at index
