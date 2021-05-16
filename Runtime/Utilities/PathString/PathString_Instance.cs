@@ -444,6 +444,21 @@ namespace HexCS.Core
             return newPath;
         }
 
+        /// <summary>
+        /// Get the path as a queue
+        /// </summary>
+        public Queue<string> AsQueue() => new Queue<string>(_path);
+
+        /// <summary>
+        /// Get the path as a stack (the last member is poped each time)
+        /// </summary>
+        public Stack<string> AsStack() => new Stack<string>(_path);
+
+        /// <summary>
+        /// Get the path as a list
+        /// </summary>
+        public List<string> AsList() => new List<string>(_path);
+
 
         /// <summary>
         /// If the path is a valid directory path and that directory does not yet exist, creates it
