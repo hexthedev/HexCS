@@ -27,6 +27,11 @@
         public int Y { get; private set; }
 
         /// <summary>
+        /// results in all combinations of x and y. So x * y
+        /// </summary>
+        public int Combinations => X * Y;
+
+        /// <summary>
         /// Returns new GridCoordinate2 with x and y values summed
         /// </summary>
         /// <param name="vec1">First GridCoordinate2</param>
