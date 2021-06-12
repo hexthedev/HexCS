@@ -31,6 +31,13 @@
         /// </summary>
         public int Combinations => X * Y;
 
+
+        public static DiscreteVector2 Left => new DiscreteVector2(-1, 0);
+        public static DiscreteVector2 Up => new DiscreteVector2(0, 1);
+        public static DiscreteVector2 Right => new DiscreteVector2(1, 0);
+        public static DiscreteVector2 Down => new DiscreteVector2(0, -1);
+
+
         /// <summary>
         /// Returns new GridCoordinate2 with x and y values summed
         /// </summary>
