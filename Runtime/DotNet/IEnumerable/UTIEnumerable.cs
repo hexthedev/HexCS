@@ -211,5 +211,13 @@ namespace HexCS.Core
 
             return new_enumeration;
         }
+
+        /// <summary>
+        /// Perform an action on eachelement of the enumerable
+        /// </summary>
+        public static void Do<T1>(this IEnumerable<T1> enumerable, Action<T1> action)
+        {
+            foreach (T1 element in enumerable) action(element);
+        }
     }
 }
