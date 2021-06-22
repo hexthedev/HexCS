@@ -592,6 +592,7 @@ namespace HexCS.Core
         /// <returns></returns>
         public string ToString(char separator, bool withExtention = true)
         {
+            if (_path == null) return string.Empty;
             if(withExtention || Extension == string.Empty) return _path.CombineString(separator.ToString());
 
             string[] path = _path.ShallowCopy();
