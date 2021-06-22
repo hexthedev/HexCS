@@ -227,5 +227,34 @@ namespace HexCS.Core
         /// <param name="target"></param>
         /// <returns></returns>
         public static bool IsNullOrEmpty<T>(this T[] target) => target == null || target.Length == 0;
+
+        /// <summary>
+        ///  Can be used to find things like max, min, etc. Selects the first element as the candidate.
+        ///  Then performs query against the current candidate and next element. After searching all
+        ///  elements returns the ast candidate
+        /// </summary>
+        public static T CalcSearch<T>(this T[] target, Func<T, T, bool> query)
+        {
+            T candidate = target[0];
+
+            for(int i = 1; i<target.Length; i++)
+            {
+                if (query(target[i], candidate)) candidate = target[i];
+            }
+
+            return candidate;
+        }
+
+        /// <summary>
+        /// Mutates array elements with action
+        /// </summary>
+        public static void Mutate<T>(ref T[] target, Func<T, T> Action)
+        {
+            for(int i = 0; i<target.Length; i++)
+            {
+                target[i] = Action(target[i]);
+            }
+        }
+
     }
 }
