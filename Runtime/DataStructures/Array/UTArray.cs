@@ -230,8 +230,8 @@ namespace HexCS.Core
 
         /// <summary>
         ///  Can be used to find things like max, min, etc. Selects the first element as the candidate.
-        ///  Then performs query against the current candidate and next element. After searching all
-        ///  elements returns the ast candidate
+        ///  Then performs query, first arg next element, second arg current candidate. If true, next element is set to the current candidate
+        ///  After searching all elements returns the current candidate
         /// </summary>
         public static T CalcSearch<T>(this T[] target, Func<T, T, bool> query)
         {
