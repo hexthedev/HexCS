@@ -81,6 +81,46 @@ namespace HexCS.Core
         }
 
         /// <summary>
+        /// Checks if the PathString is a directory that exists. 
+        /// </summary>
+        public bool IsDirectory
+        {
+            get 
+            {
+                if (!TryAsDirectoryInfo(out DirectoryInfo info)) return false;
+                if (!info.Exists) return false;
+                return true;
+            }
+        }
+
+        /// <summary>
+        /// Checks if the PathString is a file that exists. 
+        /// </summary>
+        public bool IsFile
+        {
+            get
+            {
+                if (!TryAsFileInfo(out FileInfo info)) return false;
+                if (!info.Exists) return false;
+                return true;
+            }
+        }
+
+        /// <summary>
+        /// Checks to see if the path is an existing directory or file. 
+        /// Returns -1 if directory, or 1 if file. Returns 0 if does not exist.
+        /// </summary>
+        public int IsExists
+        {
+            get
+            {
+                if (IsDirectory) return -1;
+                if (IsFile) return 1;
+                return 0;
+            }
+        }
+
+        /// <summary>
         /// Get the path step at index
         /// </summary>
         /// <param name="index"></param>
