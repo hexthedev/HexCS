@@ -73,5 +73,18 @@ namespace HexCS.Core
 
             return neighbours.ToArray();
         }
+
+        public static DiscreteVector2 RandomIndex<T>(this T[,] target)
+        {
+            int x = UTRandom.Int(0, target.GetLength(0));
+            int y = UTRandom.Int(0, target.GetLength(1));
+            return new DiscreteVector2(x, y);
+        }
+        
+        public static T RandomElement<T>(this T[,] target)
+        {
+            DiscreteVector2 coord = target.RandomIndex();
+            return target[coord.X, coord.Y];
+        }
     }
 }
