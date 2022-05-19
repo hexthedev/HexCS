@@ -100,7 +100,7 @@ namespace HexCS.Core
         private int d0;
         private int d1;
         
-        private int cur0;
+        private int cur0 = -1;
         private int cur1;
 
         object IEnumerator.Current => Current;
@@ -130,7 +130,7 @@ namespace HexCS.Core
 
         public void Reset()
         {
-            cur0 = 0;
+            cur0 = -1;
             cur1 = 0;
         }
 
