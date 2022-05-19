@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace HexCS.Core
@@ -86,5 +87,57 @@ namespace HexCS.Core
             DiscreteVector2 coord = target.RandomIndex();
             return target[coord.X, coord.Y];
         }
+        
+        public static IEnumerable<DiscreteVector2> EnumerateIndices<T>(this T[,] target)
+            => new IndexEnumerator2D(target.GetLength(0), target.GetLength(1));
+
+        public static T At<T>(this T[,] target, DiscreteVector2 index)
+            => target[index.X, index.Y];
+    }
+    
+    public class IndexEnumerator2D : IEnumerator<DiscreteVector2>, IEnumerable<DiscreteVector2>, IEnumerable
+    {
+        private int d0;
+        private int d1;
+        
+        private int cur0;
+        private int cur1;
+
+        object IEnumerator.Current => Current;
+        public DiscreteVector2 Current
+        {
+            get => new DiscreteVector2(cur0, cur1);
+        }
+
+        public IndexEnumerator2D(int dim0Length, int dim1Length)
+        {
+            d0 = dim0Length;
+            d1 = dim1Length;
+        }
+            
+        public bool MoveNext()
+        {
+            cur0++;
+
+            if (cur0 == d0)
+            {
+                cur0 = 0;
+                cur1++;
+            }
+
+            return cur0 < d0 && cur1 < d1;
+        }
+
+        public void Reset()
+        {
+            cur0 = 0;
+            cur1 = 0;
+        }
+
+        public void Dispose() { }
+
+        public IEnumerator<DiscreteVector2> GetEnumerator() => this;
+
+        IEnumerator IEnumerable.GetEnumerator() => this;
     }
 }
