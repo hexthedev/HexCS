@@ -73,5 +73,14 @@ namespace HexCS.Core
 
             return list;
         }
+
+        public static T Next<T>(this List<T> target, T current)
+        {
+            if (current == null)
+                return target[0];
+            
+            int i = target.IndexOf(current);
+            return target[(i+1) % target.Count];
+        }
     }
 }
