@@ -9,6 +9,21 @@ namespace HexCS.Core
     /// </summary>
     public static class UTArray2D
     {
+        public static int FlatLength<T>(this T[,] target) 
+            => target.GetLength(0) * target.GetLength(1);
+
+        public static T AtFlatIndex<T>(this T[,] target, int index)
+        {
+            int xLength = target.GetLength(0);
+            return target[index % xLength, index / xLength];
+        }
+
+        public static void SetFlatIndex<T>(this T[,] target, int index, T newValue)
+        {
+            int xLength = target.GetLength(0);
+            target[index % xLength, index / xLength] = newValue;
+        }
+
         /// <summary>
         /// Constructs a 2D array where each element is populated by the output
         /// of a single call to the construction function
