@@ -256,5 +256,15 @@ namespace HexCS.Core
             }
         }
 
+        public static T At2DIndex<T>(this T[] target, DiscreteVector2 index, int xWidth)
+        {
+            return target[index.X + index.Y * xWidth];
+        }
+        
+        public static void Set2DIndex<T>(this T[] target, DiscreteVector2 index, int xWidth, T newValue)
+        {
+            target[index.X + index.Y * xWidth] = newValue;
+        }
+        
     }
 }
