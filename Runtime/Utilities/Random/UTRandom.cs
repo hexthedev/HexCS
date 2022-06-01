@@ -39,6 +39,16 @@ namespace HexCS.Core
         }
 
         /// <summary>
+        /// Returns a float between 0 and max (inclusive)
+        /// </summary>
+        /// <param name="max"></param>
+        /// <returns></returns>
+        public static float Float(float max = float.MaxValue)
+        {
+            return PercentageF() * max;
+        }
+        
+        /// <summary>
         /// Returns an int between 0 and max (exclusive). Max must be > 0
         /// </summary>
         /// <param name="max">max int to random (exclusive)</param>
