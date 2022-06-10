@@ -29,7 +29,7 @@
         /// <summary>
         /// results in all combinations of x and y. So x * y
         /// </summary>
-        public int Combinations => X * Y;
+        public int Product => X * Y;
 
 
         public static DiscreteVector2 Left => new DiscreteVector2(-1, 0);
