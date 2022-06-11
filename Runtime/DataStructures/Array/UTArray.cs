@@ -265,6 +265,24 @@ namespace HexCS.Core
         {
             target[index.X + index.Y * xWidth] = newValue;
         }
+
+        /// <summary>
+        /// Given two arrays of equal size provide the value from the target array with the same index
+        /// as the the key in the lookup array.
+        /// </summary>
+        public static bool TryParallelArrayLookup<T1, T2>(this T1[] target, T2[] lookup, T2 key, out T1 result)
+        {
+            int index = Array.IndexOf(lookup, key);
+        
+            if (index != -1)
+            {
+                result = target[index];
+                return true;
+            }
+
+            result = default;
+            return false;
+        } 
         
     }
 }
