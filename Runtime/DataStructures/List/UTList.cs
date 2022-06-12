@@ -82,5 +82,16 @@ namespace HexCS.Core
             int i = target.IndexOf(current);
             return target[(i+1) % target.Count];
         }
+
+        /// <summary>
+        /// Picks a random element then removes it from list
+        /// </summary>
+        public static T RandomAndRemove<T>(this List<T> target)
+        {
+            int index = UTRandom.Int(0, target.Count);
+            T value = target[index];
+            target.RemoveAt(index);
+            return value;
+        }
     }
 }

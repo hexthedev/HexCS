@@ -282,7 +282,16 @@ namespace HexCS.Core
 
             result = default;
             return false;
-        } 
-        
+        }
+
+        public static int[] IndiciesAsArray<T>(this T[] array)
+        {
+            int[] indices = new int[array.Length];
+
+            for (int i = 0; i < array.Length; i++)
+                indices[i] = i;
+
+            return indices;
+        }
     }
 }
