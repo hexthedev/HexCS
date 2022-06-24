@@ -18,7 +18,7 @@ namespace HexCSTests.Core
         public void Merge()
         {
             // Act
-            int[] test = UTIEnumerable.Merge(prop1, prop2).ToArray();
+            int[] test = UTIEnumerable.Combine(prop1, prop2).ToArray();
 
             // Assert
             Assert.That(UTArray.EqualsElementWise(test, new int[] { 1, 2, 3, 2, 3, 4 }));

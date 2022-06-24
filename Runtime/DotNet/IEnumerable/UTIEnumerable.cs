@@ -15,7 +15,7 @@ namespace HexCS.Core
         /// <param name="enumerables">Enumerable of Enumerables</param>
         /// <typeparam name="T">Type of merging enumerable</typeparam>
         /// <returns>single enumerable of type T</returns>  	
-        public static IEnumerable<T> Merge<T>(this IEnumerable<IEnumerable<T>> enumerables)
+        public static IEnumerable<T> Combine<T>(this IEnumerable<IEnumerable<T>> enumerables)
         {
             List<T> obs = new List<T>();
 
@@ -36,9 +36,9 @@ namespace HexCS.Core
         /// <param name="enumerables">enumerables</param>
         /// <typeparam name="T">Type of merging enumerable</typeparam>
         /// <returns>single enumerable of type T</returns>  	
-        public static IEnumerable<T> Merge<T>(params IEnumerable<T>[] enumerables)
+        public static IEnumerable<T> Combine<T>(params IEnumerable<T>[] enumerables)
         {
-            return Merge((IEnumerable<IEnumerable<T>>)enumerables);
+            return Combine((IEnumerable<IEnumerable<T>>)enumerables);
         }
 
         /// <summary>
@@ -216,7 +216,7 @@ namespace HexCS.Core
             result = default;
             return false;
         }
-
+        
         /// <summary>
         /// Sometimes for some reason you can convert enumerables to types that the 
         /// enumerables type is a child of. For example you can't cast int32[] to
