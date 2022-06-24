@@ -192,6 +192,32 @@ namespace HexCS.Core
         }
 
         /// <summary>
+        /// Return the first value that meets a predicate or false if can't find it.
+        /// </summary>
+        /// <param name="target"></param>
+        /// <param name="query"></param>
+        /// <param name="result"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static bool TryGetFirst<T>(this IEnumerable<T> target, Predicate<T> query, out T result)
+        {
+            if (target != null)
+            {
+                foreach (T element in target)
+                {
+                    if (query(element))
+                    {
+                        result = element;
+                        return true;
+                    }
+                }
+            }
+            
+            result = default;
+            return false;
+        }
+
+        /// <summary>
         /// Sometimes for some reason you can convert enumerables to types that the 
         /// enumerables type is a child of. For example you can't cast int32[] to
         /// IEquatable<int32>[]. This function does that.

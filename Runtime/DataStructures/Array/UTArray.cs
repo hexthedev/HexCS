@@ -293,5 +293,44 @@ namespace HexCS.Core
 
             return indices;
         }
+
+        /// <summary>
+        /// Adds an element to an array by making a new array
+        /// </summary>
+        /// <param name="target"></param>
+        /// <param name="newElement"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static T[] Add<T>(this T[] target, T newElement)
+        {
+            T[] newArray = new T[target.Length];
+
+            for (int i = 0; i < target.Length; i++)
+                newArray[i] = target[i];
+
+            newArray[target.Length] = newElement;
+            return newArray;
+        }
+
+        /// <summary>
+        /// Returns the modular next value following the given value.
+        /// If the given value is not in the array returns the first element.
+        /// If array is size 0 returns default
+        /// </summary>
+        /// <param name="target"></param>
+        /// <param name="lastValue"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static T Next<T>(this T[] target, T lastValue)
+        {
+            if (target == null || target.Length == 0)
+                return default;
+            
+            for (int i = 0; i < target.Length; i++)
+                if (target[i].Equals(lastValue))
+                    return target[(i + 1) % target.Length];
+
+            return target[0];
+        }
     }
 }
