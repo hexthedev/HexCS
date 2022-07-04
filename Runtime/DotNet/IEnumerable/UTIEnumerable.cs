@@ -174,6 +174,9 @@ namespace HexCS.Core
         /// <returns></returns>
         public static int QueryIndexOf<T>(this IEnumerable<T> target, Predicate<T> query)
         {
+            if (target == null)
+                return -1;
+            
             int index = -1;
             int counter = 0;
 

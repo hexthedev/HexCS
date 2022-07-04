@@ -108,6 +108,9 @@ namespace HexCS.Core
 
         public static T At<T>(this T[,] target, DiscreteVector2 index)
             => target[index.X, index.Y];
+
+        public static bool IsValidIndex<T>(this T[,] target, DiscreteVector2 index)
+            => index.X != -1 && index.Y != -1 && index.X < target.GetLength(0) && index.Y < target.GetLength(1);
     }
     
     public class IndexEnumerator2D : IEnumerator<DiscreteVector2>, IEnumerable<DiscreteVector2>, IEnumerable

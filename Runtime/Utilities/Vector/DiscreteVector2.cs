@@ -71,6 +71,8 @@
 
         /// <inheritdoc />
         public override int GetHashCode() => UTHash.BasicHash(X, Y);
+
+        public static implicit operator DiscreteVector2((int, int) tuple) => new DiscreteVector2(tuple.Item1, tuple.Item2);
     }
 }
 
