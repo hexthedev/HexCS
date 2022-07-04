@@ -109,6 +109,9 @@ namespace HexCS.Core
         public static T At<T>(this T[,] target, DiscreteVector2 index)
             => target[index.X, index.Y];
 
+        public static void Set<T>(this T[,] target, DiscreteVector2 index, T value)
+            => target[index.X, index.Y] = value;
+        
         public static bool IsValidIndex<T>(this T[,] target, DiscreteVector2 index)
             => index.X != -1 && index.Y != -1 && index.X < target.GetLength(0) && index.Y < target.GetLength(1);
 

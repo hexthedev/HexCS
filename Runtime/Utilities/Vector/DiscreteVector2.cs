@@ -76,6 +76,12 @@
         public static implicit operator DiscreteVector2((int, int) tuple) => new DiscreteVector2(tuple.Item1, tuple.Item2);
 
         public override string ToString() => $"[ {X}, {Y} ]";
+
+        public static DiscreteVector2 Parse(string str)
+        {
+            string[] args = str.Substring(1, str.Length - 2).Split(",");
+            return (int.Parse(args[0]), int.Parse(args[1]));
+        }
     }
 }
 
