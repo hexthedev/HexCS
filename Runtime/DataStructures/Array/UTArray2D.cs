@@ -111,6 +111,31 @@ namespace HexCS.Core
 
         public static bool IsValidIndex<T>(this T[,] target, DiscreteVector2 index)
             => index.X != -1 && index.Y != -1 && index.X < target.GetLength(0) && index.Y < target.GetLength(1);
+
+        public static DiscreteVector2 Size<T>(this T[,] target) 
+            => (target.GetLength(0), target.GetLength(1));
+
+        /// <summary>
+        /// Copies data from src to dst only if there is space in dst. i.e. if dst is smaller than src not all
+        /// data will be copied 
+        /// </summary>
+        /// <param name="src"></param>
+        /// <param name="dst"></param>
+        /// <typeparam name="T"></typeparam>
+        public static void CopyWhatFits<T>(this T[,] src, T[,] dst)
+        {
+            int blockWidth = src.GetLength(0) <= dst.GetLength(0) 
+                ? src.GetLength(0) : dst.GetLength(0);
+            
+            int blockHeight = src.GetLength(1) <= dst.GetLength(1) 
+                ? src.GetLength(1) : dst.GetLength(1);
+            
+            for (int x = 0; x < blockWidth; x++)
+            {
+                for (int y = 0; y < blockHeight; y++)
+                    dst[x, y] = src[x, y];
+            }
+        }
     }
     
     public class IndexEnumerator2D : IEnumerator<DiscreteVector2>, IEnumerable<DiscreteVector2>, IEnumerable

@@ -36,6 +36,7 @@
         public static DiscreteVector2 Up => new DiscreteVector2(0, 1);
         public static DiscreteVector2 Right => new DiscreteVector2(1, 0);
         public static DiscreteVector2 Down => new DiscreteVector2(0, -1);
+        public static DiscreteVector2 Zero => new DiscreteVector2(0, 0);
 
 
         /// <summary>
@@ -73,6 +74,8 @@
         public override int GetHashCode() => UTHash.BasicHash(X, Y);
 
         public static implicit operator DiscreteVector2((int, int) tuple) => new DiscreteVector2(tuple.Item1, tuple.Item2);
+
+        public override string ToString() => $"[ {X}, {Y} ]";
     }
 }
 
