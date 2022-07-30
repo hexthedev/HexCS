@@ -106,6 +106,10 @@ namespace HexCS.Core
         public static IEnumerable<DiscreteVector2> EnumerateIndices<T>(this T[,] target)
             => new IndexEnumerator2D(target.GetLength(0), target.GetLength(1));
 
+        public static IEnumerable<T> EnumerateValues<T>(this T[,] target)
+            => new ValueEnumerator2D<T>(target);
+
+        
         public static T At<T>(this T[,] target, DiscreteVector2 index)
             => target[index.X, index.Y];
 
@@ -183,6 +187,54 @@ namespace HexCS.Core
         public void Dispose() { }
 
         public IEnumerator<DiscreteVector2> GetEnumerator() => this;
+
+        IEnumerator IEnumerable.GetEnumerator() => this;
+    }
+    
+    public class ValueEnumerator2D<T> : IEnumerator<T>, IEnumerable<T>, IEnumerable
+    {
+        private T[,] array;
+        private int d0;
+        private int d1;
+        
+        private int cur0 = -1;
+        private int cur1;
+
+        object IEnumerator.Current => Current;
+        public T Current
+        {
+            get => array[cur0, cur1];
+        }
+
+        public ValueEnumerator2D(T[,] array)
+        {
+            d0 = array.GetLength(0);
+            d1 = array.GetLength(1);
+            this.array = array;
+        }
+            
+        public bool MoveNext()
+        {
+            cur0++;
+
+            if (cur0 == d0)
+            {
+                cur0 = 0;
+                cur1++;
+            }
+
+            return cur0 < d0 && cur1 < d1;
+        }
+
+        public void Reset()
+        {
+            cur0 = -1;
+            cur1 = 0;
+        }
+
+        public void Dispose() { }
+
+        public IEnumerator<T> GetEnumerator() => this;
 
         IEnumerator IEnumerable.GetEnumerator() => this;
     }
