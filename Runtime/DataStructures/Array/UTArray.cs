@@ -96,7 +96,10 @@ namespace HexCS.Core
         /// <returns>element</returns>
         public static T RandomElement<T>(this T[] array)
         {
-            return array[UTRandom.Int(array.Length)];
+            if (array == null || array.Length == 0)
+                return default;
+            
+            return array[UTRandom.Int(array.Length-1)];
         }
 
         /// <summary>

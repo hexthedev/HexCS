@@ -49,10 +49,10 @@ namespace HexCS.Core
         }
         
         /// <summary>
-        /// Returns an int between 0 and max (exclusive). Max must be > 0
+        /// Returns an int between 0 and max (inclusive). Max must be > 0
         /// </summary>
-        /// <param name="max">max int to random (exclusive)</param>
-        /// <returns>random int between 0 and max (exclusive)</returns>
+        /// <param name="max">max int to random (inclusive)</param>
+        /// <returns>random int between 0 and max (inclusive)</returns>
         public static int Int(int max = int.MaxValue)
         {
             return _random.Value.Next(max);
