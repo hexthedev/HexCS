@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -247,6 +247,30 @@ namespace HexCS.Core
         public static void Do<T1>(this IEnumerable<T1> enumerable, Action<T1> action)
         {
             foreach (T1 element in enumerable) action(element);
+        }
+
+        /// <summary>
+        /// Splits an IEnumerable into two IEnumerable based on a condition. 
+        /// </summary>
+        /// <param name="target"></param>
+        /// <param name="condition"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static (IEnumerable<T> TrueValues, IEnumerable<T> FalseValues) SplitConditional<T>(
+            this IEnumerable<T> target, Func<T, bool> condition)
+        {
+            List<T> Trues = new List<T>();
+            List<T> Falses = new List<T>();
+
+            foreach (T variable in target)
+            {
+                if(condition(variable))
+                    Trues.Add(variable);
+                else
+                    Falses.Add(variable);
+            }
+
+            return (Trues, Falses);
         }
     }
 }
