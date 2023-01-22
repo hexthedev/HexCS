@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -192,6 +193,22 @@ namespace HexCS.Core
         /// <returns></returns>
         public static string[] GetLines(this string original) => Regex.Split(original, "\r\n|\r|\n");
 
+        public static bool SubStringMatch(this string target, int index, string check)
+        {
+            for (int i = 0; i < check.Length; i++)
+            {
+                int targetIndex = i + index;
+                
+                if (targetIndex >= target.Length)
+                    return false;
+
+                if (target[targetIndex] != check[i])
+                    return false;
+            }
+
+            return true;
+        }
+        
         // Scans take a string reference and index reference, and move the index forward in the string
         // until some condition is met
         #region Scans
@@ -283,9 +300,7 @@ namespace HexCS.Core
             index++;
         }
         #endregion
-
-
-
+        
         // Character loops perform a function on each character of a string until some condition is met (i.e. Line end)
         #region Character Loops
         /// <summary>
